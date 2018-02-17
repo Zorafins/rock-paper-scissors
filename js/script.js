@@ -3,22 +3,40 @@
 let userPoints = 0;
 let computerPoints = 0;
 let round = 1;
+const results = document.querySelector('#results');
 
-// Prompts the player for their selection, calls the computerPlay function to get the computer's selection, 
-// then passes these values to the playRound function. The value returned by the playRound function is then
-// printed and the round value is incremented. After 5 rounds, the endReport function is called
+// Player selection
 
-function game() {
-  while (round <= 5) { 
-    let playerSelection = prompt("Please enter rock, paper or scissors");
-    let computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection))
-    round++;
-    if (round > 5) {
-      endReport();
-    }
-  }
-}
+let rock = document.querySelector("#rock");
+let paper = document.querySelector("#paper");
+let scissors = document.querySelector("#scissors");
+
+rock.addEventListener("click", function(e){
+  let playerSelection = "rock";
+  let computerSelection = computerPlay();
+  console.log(playRound(playerSelection, computerSelection));
+  const rockResult = document.createElement('p');
+  rockResult.textContent = (playRound(playerSelection, computerSelection));
+  results.appendChild(rockResult);
+})
+
+paper.addEventListener("click", function(e){
+  let playerSelection = "paper";
+  let computerSelection = computerPlay();
+  console.log(playRound(playerSelection, computerSelection));
+  const paperResult = document.createElement('p');
+  paperResult.textContent = (playRound(playerSelection, computerSelection));
+  results.appendChild(paperResult);
+})
+
+scissors.addEventListener("click", function(e){
+  let playerSelection = "scissors";
+  let computerSelection = computerPlay();
+  console.log(playRound(playerSelection, computerSelection));
+  const scissorsResult = document.createElement('p');
+  scissorsResult.textContent = (playRound(playerSelection, computerSelection));
+  results.appendChild(scissorsResult);
+})
   
 // Randomly generate the computer's play 
 
@@ -85,4 +103,5 @@ function endReport() {
 
 // Starts the game
 
-game();
+// game();
+
