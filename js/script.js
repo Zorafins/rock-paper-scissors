@@ -2,7 +2,6 @@
 
 let playerScore = 0;
 let computerScore = 0;
-const results = document.querySelector('#results');
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
@@ -13,18 +12,27 @@ rock.addEventListener("click", function(){
   document.getElementById("result").innerHTML = (playRound("rock", computerPlay()));
   document.getElementById("playerscore").innerHTML = playerScore;
   document.getElementById("computerscore").innerHTML = computerScore;
+  if ((playerScore >= 5) || (computerScore >= 5)) {
+    announceWinner();
+  }
 })
 
 paper.addEventListener("click", function(){
   document.getElementById("result").innerHTML = (playRound("paper", computerPlay()));
   document.getElementById("playerscore").innerHTML = playerScore;
   document.getElementById("computerscore").innerHTML = computerScore;
+  if ((playerScore >= 5) || (computerScore >= 5)) {
+    announceWinner();
+  }
 })
 
 scissors.addEventListener("click", function(e){
   document.getElementById("result").innerHTML = (playRound("scissors", computerPlay()));
   document.getElementById("playerscore").innerHTML = playerScore;
   document.getElementById("computerscore").innerHTML = computerScore;
+  if ((playerScore >= 5) || (computerScore >= 5)) {
+    announceWinner();
+  }
 })
   
 // Randomly generate the computer's play 
@@ -71,14 +79,14 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// Prints the user's points, the computer's points, and the result of the game
+// To do: Change console logs to DOM methods. Change buttons to a single 'Play Again' button.
   
 function announceWinner() {
-  if (playerScore < computerScore) {
-    console.log("Computer wins!");
-  } else if (playerScore > computerScore) {
+  if (playerScore > computerScore) {
     console.log("You win!");
-  } else console.log("Game tied!");
+  } else {
+    console.log("Computer wins!");
+  }
 }
 
 
