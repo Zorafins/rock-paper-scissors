@@ -5,8 +5,9 @@ let computerScore = 0;
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
+const replay = document.querySelector("#replay");
 
-// Player selection
+// Event Listeners for the buttons
 
 rock.addEventListener("click", function(){
   document.getElementById("result").innerHTML = (playRound("rock", computerPlay()));
@@ -33,6 +34,10 @@ scissors.addEventListener("click", function(e){
   if ((playerScore >= 5) || (computerScore >= 5)) {
     announceWinner();
   }
+})
+
+replay.addEventListener("click", function(){
+  location.reload();
 })
   
 // Randomly generate the computer's play 
@@ -79,14 +84,19 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// To do: Change console logs to DOM methods. Change buttons to a single 'Play Again' button.
+// Announces the winner and displays the replay button
   
 function announceWinner() {
   if (playerScore > computerScore) {
-    console.log("You win!");
+    document.getElementById("winner").innerHTML = "You win the game!";
   } else {
-    console.log("Computer wins!");
+    document.getElementById("winner").innerHTML = "Computer wins the game!";
   }
+  document.getElementById("replay").style.display = "inline";
+  document.getElementById("rock").style.display = "none";
+  document.getElementById("paper").style.display = "none";
+  document.getElementById("scissors").style.display = "none";
 }
+
 
 
